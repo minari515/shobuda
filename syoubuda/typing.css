@@ -1,0 +1,124 @@
+body {
+		background-color: khaki;
+		background-image: url(main.jpg);
+		background-position: left top;
+		background-repeat: no-repeat;
+		background-attachment: fixed;
+		background-size: 1200px;
+}
+.category{
+		 text-align:center;
+		 background-color: rgba(255,255,255,0.7);
+		 width: 1000px;
+		 height: 450px;
+		 background-position: left 1000px top 100px;
+		 margin-left: 100px;
+		}
+.hidden {
+		display: none;
+}
+#next_button {
+		margin-left: auto;
+		margin-right: auto;
+		width: 120px;
+		position: absolute;
+		top: 540px;
+		left: 550px;
+		visibility: hidden; 
+}
+#tutorial_button {
+		margin-left: auto;
+		margin-right: auto;
+		width: 200px;
+		position: absolute;
+		top: 540px;
+		left: 520px;
+}
+input[type = "button"]{
+		background-color: #fcad19; 
+		width: 80px;  
+}
+#tutorial_button{
+		width: 170px;
+}
+#room_out{
+		position: absolute;
+		top: 540px;
+		left: 570px;
+}
+
+ol{
+		background-color: #ffdead;
+		width:150px;
+		margin-top: -80px;
+		margin-left:-10px;
+		padding-left: 160px;
+}
+#room_out{
+		visibility: hidden;
+}
+#mylife_img{
+		visibility: hidden;
+		position: absolute;
+		width: 200px;
+		left: 150px;
+		top: 200px;
+}
+#hislife_img{
+		visibility: hidden;
+		position: absolute;
+		width: 200px;
+		left: 860px;
+		top: 200px;
+}
+#mylife_tu_img{
+		visibility: hidden;
+		position: absolute;
+		width: 200px;
+		left: 150px;
+		top: 200px;
+}
+#hislife_tu_img{
+		visibility: hidden;
+		position: absolute;
+		width: 200px;
+		left: 860px;
+		top: 200px;
+}
+#skill_img{
+		visibility: hidden;
+		position: absolute;
+		width: 200px;
+		left: 150px;
+		top: 500px;
+}
+#skill_tu_img{
+		visibility: hidden;
+		position: absolute;
+		width: 200px;
+		left: 150px;
+		top: 500px;
+}
+div[id^="japanese"]{
+		background-color: white;
+		width: 400px;
+		margin-left: 300px;
+}
+div[id^="word"]{
+		background-color: white;
+		width: 400px;
+		margin-left: 300px;
+}
+#count_tu{
+		margin-top:80px;
+}
+div[id^="count_"]{
+	font-size:30px;
+}
+#tutorial1{
+		text-align: left;
+		position: absolute;
+		left: 400px;
+		top: 450px;
+}
+

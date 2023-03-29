@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <title>勝負打</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+		
+    <script src="/socket.io/socket.io.js"></script>
+    <script type="text/javascript" src="/static/type.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="/static/typing.css" />
+  </head>
+  
+  <body>
+		<audio src ="/static/battle.mp3" id="battle_audio" loop></audio>
+		<audio src ="/static/button.mp3" id="button_audio"></audio>
+		<audio src ="/static/lose.mp3" id="lose_audio"></audio>
+		<audio src ="/static/main.mp3" id="main_audio" loop></audio>
+		<audio src ="/static/matching.mp3" id="matching_audio"></audio>
+		<audio src ="/static/miss.mp3" id="miss_audio"></audio>
+		<audio src ="/static/skill.mp3" id="skill_audio"></audio>
+		<audio src ="/static/skilled.mp3" id="skilled_audio"></audio>
+		<audio src ="/static/type.mp3" id="type_audio"></audio>
+		<audio src ="/static/win.mp3" id="win_audio"></audio>
+    <div class="header" id="headmenu">
+    <h1>勝負打</h1>
+    <div class="jumpmenu">
+    <ol>
+        <li><a href="#match" onclick="changeCategory('cat_match'),onlineImage()">オンライン対戦</a></li>
+        <li><a href="#self" onclick="changeCategory('cat_self'),mainImage()">自主トレ</a></li>
+        <li><a href="#option" onclick="changeCategory('cat_option'),mainImage()">設定</a></li>
+        <li><a href="#tutorial" onclick="changeCategory('cat_tutorial'),mainImage()">チュートリアル</a></li>
+    </ol>
+    </div>
+    </div>
+    
+    
+    <div id ="mode">
+        <div class="category hidden" id="cat_match">
+        <h2><a id="match">オンライン対戦</a></h2>
+        <div id = "syoshin">初心者ルーム</div>
+        <input type="button" class = "syo" id="start_button1" value="room1" onclick="Online1()" style="text-align: center">
+				<input type="button" class = "syo" id="start_button2" value="room2" onclick="Online2()" style="text-align: center">
+				<input type="button" class = "syo" id="start_button3" value="room3" onclick="Online3()" style="text-align: center">
+				<input type="button" class = "syo" id="start_button4" value="room4" onclick="Online4()" style="text-align: center">
+				<input type="button" class = "syo" id="start_button5" value="room5" onclick="Online5()" style="text-align: center">
+				<br>
+				<div id ="chukyu">中級者ルーム</div>
+				<input type="button" class = "chu" id="start_button6" value="room6" onclick="Online6()" style="text-align: center">
+				<input type="button" class = "chu" id="start_button7" value="room7" onclick="Online7()" style="text-align: center">
+				<input type="button" class = "chu" id="start_button8" value="room8" onclick="Online8()" style="text-align: center">
+				<input type="button" class = "chu" id="start_button9" value="room9" onclick="Online9()" style="text-align: center">
+				<input type="button" class = "chu" id="start_button10" value="room10" onclick="Online10()" style="text-align: center">
+				<br>
+				<div id = "joukyu">上級者ルーム</div>
+				<input type="button" class = "jou" id="start_button11" value="room11" onclick="Online11()" style="text-align: center">
+				<input type="button" class = "jou" id="start_button12" value="room12" onclick="Online12()" style="text-align: center">
+				<input type="button" class = "jou" id="start_button13" value="room13" onclick="Online13()" style="text-align: center">
+				<input type="button" class = "jou" id="start_button14" value="room14" onclick="Online14()" style="text-align: center">
+				<input type="button" class = "jou" id="start_button15" value="room15" onclick="Online15()" style="text-align: center">
+				<img id="mylife_img">
+				<img id="hislife_img">
+				<img id="skill_img" src ="/static/skill_0.jpg">
+        <div id="count_online"></div>
+            
+        <h1><div id="japanese"></div></h1>
+        <h2><div id="word"></div></h2>
+        
+        <h1><div id="winlose"></div></h1>
+        <div id="scoredis"></div>
+				<div id="wait_matching"></div>
+				<input type="button" id="room_out" value="退出" onclick="roomOut()" style="text-align: center">
+        
+        </div>
+        
+        <div class="category hidden" id="cat_self">
+        <h2><a id="self">自主トレ</a></h2>
+        <input type="button" id="start_button_solo" value="solo play" onclick="gameStart_solo()" style="text-align: center">
+				<div id="count_solo"></div>
+        <h1><div id="japanese_solo"></div></h1>
+        <h2><div id="word_solo"></div></h2>
+				<div id = "play_count"></div>
+        <div id="scoredis_solo"></div>
+        </div>
+        
+        <div class="category hidden" id="cat_option">
+        <h2><a id="option">設定</a></h2>
+				<a id="mute">ミュート：</a>
+        <input type="button" id="mute_button" value="on" onclick="mute()">
+        </div>
+        
+        <div class="category hidden" id="cat_tutorial">
+        <h2><a id="tutorial">チュートリアル</a></h2>
+       
+        <input type="button" id="tutorial_button" value="チュートリアルスタート" onclick="tutorial()">
+        <img id="mylife_tu_img">
+				<img id="hislife_tu_img">
+				<img id="skill_tu_img" src ="/static/skill_0.jpg">
+        <div id="count_tu"></div>
+        
+        <h1><div id="japanese_tu"></div></h1>
+        <h2><div id="word_tu"></div></h2>
+        
+        <h2><div id="win_tu"></div></h2>
+        <div id="scoredis_tu"></div>
+         <h3><a id="tutorial1">チュートリアルへようこそ!<br>ここではゲームのルールを説明します</a></h3>
+        
+        <input type="button" id="next_button" value="次へ" onclick="next()">
+        </div>
+    </div>
+  </body>
+</html>
